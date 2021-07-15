@@ -1,1 +1,1 @@
-worker: npm run devStart
+worker: node main.js
