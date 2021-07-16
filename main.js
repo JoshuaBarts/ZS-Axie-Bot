@@ -18,8 +18,21 @@ process.setMaxListeners(Infinity);
 
 
 
-function getSLP(data) {
-    return JSON.stringify(data);
+function getSLP() {
+    var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://api.coingecko.com/api/v3/simple/price?ids=smooth-love-potion&vs_currencies=php";
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            var x = parseInt(data['smooth-love-potion'].php);
+            return x;
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    
 }
 
 //check if Axie Bot is online
@@ -32,6 +45,7 @@ client.on("ready", () => {
 const prefix = "/";
 //Axie message
 client.on("message", msg => {
+    var content = msg.content.split(" ");
     if (msg.content === `${prefix}axie`) {
         msg.channel.send("Pakyu");
         //msg.channel.send(getSLP());
@@ -54,21 +68,29 @@ client.on("message", msg => {
             if (this.readyState == 4 && this.status == 200) {
                 var data = JSON.parse(this.responseText);
                 var x = JSON.stringify(data['smooth-love-potion'].php);
-                getSLP(data['smooth-love-potion'].php);
+                getSLP();
                 console.log(x);
                 msg.channel.send("SLP VALUE:  ₱" + x + "");
             }
-            else if (msg.content === `${prefix}convert`) {
-                console.log("convert");
-            }
             
-    
         };
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
         
     }
- 
+    else if (content[0] == `${prefix}convert`) {
+        var num = content[1];
+        var number = parseFloat(getSLP());
+        var total = parseInt(num) * parseInt(number);
+        if (isNaN(total) || total == '') {
+            msg.channel.send("Please enter a number");
+        }
+        else {
+            msg.channel.send("₱" + total.toFixed(2));
+        }
+        
+    }
+    
 });
 
 
