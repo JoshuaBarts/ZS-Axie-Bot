@@ -110,13 +110,9 @@ client.on("message", msg => {
     else if (msg.content === `${prefix}axie help`) {
         msg.channel.send("/slp - get slp value \n /hello axie - gives random slp \n /convert <number> - converts slp to php");
     }
-    
-    process.on('uncaughtException', err => {
-        console.log(`Uncaught Exception: ${err.message}`)
-        process.exit(1)
-    })
         
 });
+
 
 //bot token
 client.login(process.env.BOT_TOKEN);
