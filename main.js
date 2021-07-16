@@ -70,7 +70,7 @@ client.on("message", msg => {
         msg.channel.send("You got " + Math.floor(Math.random() * 10) + " free SLP!");
     }
     else if (msg.content == `${prefix}onjie`) {
-        msg.channel.send("Iona");
+        msg.channel.send("Iona❤️");
     }
     else if (msg.content == `${prefix}axie help`) {
         msg.channel.send("```COMMANDS \n\n/slp- get slp value \n/convert <number> - convertslp to php \n/hello axie - random slp \n/axie help - list of commands```");
