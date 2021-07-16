@@ -35,20 +35,20 @@ client.on("message", msg => {
 
     var content = msg.content.split(" ");
     
-    if (msg.content === `${prefix}axie`) {
+    if (msg.content == `${prefix}axie`) {
         msg.channel.send("Pakyu");
         //msg.channel.send(getSLP());
         //or if you want to mention name
         //msg.reply("Putang ina mo!");
     }
-    else if (msg.content === `${prefix}abu`) {
+    else if (msg.content == `${prefix}abu`) {
         msg.channel.send("rat");
     }
-    else if (msg.content === `${prefix}hello axie`) {
+    else if (msg.content == `${prefix}hello axie`) {
         msg.channel.send("You got " + Math.floor(Math.random() * 10) + " free SLP!");
     }
-    else if (msg.content === `${prefix}slp`) {
-        
+    else if (msg.content == `${prefix}slp`) {
+        process.setMaxListeners(Infinity);
         var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
         var xmlhttp = new XMLHttpRequest();
         var url = "https://api.coingecko.com/api/v3/simple/price?ids=smooth-love-potion&vs_currencies=php";
@@ -64,7 +64,7 @@ client.on("message", msg => {
                 console.log(x);
                 msg.channel.send("SLP VALUE:  ₱" + x + "");
 
-                if (content[0] === `${prefix}convert`) {
+                /*if (content[0] === `${prefix}convert`) {
         
                     console.log("convert");
                     var number = content[1];
@@ -75,15 +75,14 @@ client.on("message", msg => {
                     else {
                         msg.channel.send(value.toFixed(2));
                     }
-                }
+                }*/
 
         
             };
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
-            XMLHttpRequest.abort()
             
-        }
+        };
     }
     else if (msg.content === `${prefix}axie help`) {
         msg.channel.send("/slp - get slp value \n /hello axie - gives random slp \n /convert <number> - converts slp to php");
