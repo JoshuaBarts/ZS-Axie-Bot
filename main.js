@@ -91,7 +91,13 @@ client.on("message", msg => {
                 getSLP(data['smooth-love-potion'].php);
                 console.log(x);
                 var value = x * number;
-                msg.channel.send("₱"+ value.toFixed(2));
+                if (isNaN(number) || number == '') {
+                    msg.channel.send("Please enter a number.");
+                }
+                else {
+                    msg.channel.send("₱"+ value.toFixed(2));
+                }
+                
 
             }
             
