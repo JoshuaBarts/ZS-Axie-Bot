@@ -45,7 +45,7 @@ client.on("message", msg => {
         msg.channel.send("You got " + Math.floor(Math.random() * 10) + " free SLP!");
     }
     else if (msg.content === `${prefix}slp`) {
-        var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+       /* var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
         var xmlhttp = new XMLHttpRequest();
         var url = "https://api.coingecko.com/api/v3/simple/price?ids=smooth-love-potion&vs_currencies=php";
 
@@ -57,13 +57,15 @@ client.on("message", msg => {
                 console.log(x);
                 msg.channel.send("SLP VALUE:  ₱" + x + "");
             }
-            if (msg.content === `${prefix}convert`) {
-
+            else if (msg.content === `${prefix}convert`) {
+                console.log("convert");
             }
+            
     
         };
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
+        */
     }
     
     
