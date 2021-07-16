@@ -14,7 +14,7 @@ var CoingGeckoClient = new CoinGecko();
 
 //Get the current price of Axie SLP vs_currencies PHP
 
-
+process.setMaxListeners(Infinity);
 
 
 
@@ -34,7 +34,7 @@ const prefix = "/";
 client.on("message", msg => {
 
     var content = msg.content.split(" ");
-
+    
     if (msg.content === `${prefix}axie`) {
         msg.channel.send("Pakyu");
         //msg.channel.send(getSLP());
@@ -48,6 +48,7 @@ client.on("message", msg => {
         msg.channel.send("You got " + Math.floor(Math.random() * 10) + " free SLP!");
     }
     else if (msg.content === `${prefix}slp`) {
+        
         var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
         var xmlhttp = new XMLHttpRequest();
         var url = "https://api.coingecko.com/api/v3/simple/price?ids=smooth-love-potion&vs_currencies=php";
@@ -80,7 +81,8 @@ client.on("message", msg => {
             };
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
-        
+            XMLHttpRequest.abort()
+            
         }
     }
     else if (msg.content === `${prefix}axie help`) {
