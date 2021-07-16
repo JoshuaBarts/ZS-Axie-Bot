@@ -14,14 +14,6 @@ var CoingGeckoClient = new CoinGecko();
 
 //Get the current price of Axie SLP vs_currencies PHP
 
-
-
-
-
-function getSLP(data) {
-    return JSON.stringify(data);
-}
-
 //check if Axie Bot is online
 client.on("ready", () => {
     client.user.setActivity("Axie BiOT", {type: "PLAYING"});
@@ -33,10 +25,16 @@ const prefix = "/";
 //Axie message
 client.on("message", msg => {
     if (msg.content === `${prefix}axie`) {
-        msg.channel.send("```Putang ina mo!```");
+        msg.channel.send("Pakyu");
         //msg.channel.send(getSLP());
         //or if you want to mention name
         //msg.reply("Putang ina mo!");
+    }
+    else if (msg.content === `${prefix}abu`) {
+        msg.channel.send("rat");
+    }
+    else if (msg.content === `${prefix}hello axie`) {
+        msg.channel.send("You got " + Math.floor(Math.random() * 10) + " free SLP!");
     }
     else if (msg.content === `${prefix}slp`) {
         var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
@@ -49,7 +47,7 @@ client.on("message", msg => {
                 var x = JSON.stringify(data['smooth-love-potion'].php);
                 getSLP(data['smooth-love-potion'].php);
                 console.log(x);
-                msg.channel.send("```SLP VALUE:  ₱" + x + "```");
+                msg.channel.send("SLP VALUE:  ₱" + x + "");
             }
             if (msg.content === `${prefix}convert`) {
 
@@ -59,6 +57,7 @@ client.on("message", msg => {
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
     }
+    
     
         
 });
