@@ -14,6 +14,14 @@ var CoingGeckoClient = new CoinGecko();
 
 //Get the current price of Axie SLP vs_currencies PHP
 
+
+
+
+
+function getSLP(data) {
+    return JSON.stringify(data);
+}
+
 //check if Axie Bot is online
 client.on("ready", () => {
     client.user.setActivity("Axie BiOT", {type: "PLAYING"});
