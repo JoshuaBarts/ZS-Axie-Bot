@@ -32,10 +32,7 @@ client.on("ready", () => {
 const prefix = "/";
 //Axie message
 client.on("message", msg => {
-
-    var content = msg.content.split(" ");
-    
-    if (msg.content == `${prefix}axie`) {
+    if (msg.content === `${prefix}axie`) {
         msg.channel.send("Pakyu");
         //msg.channel.send(getSLP());
         //or if you want to mention name
@@ -54,38 +51,22 @@ client.on("message", msg => {
         var url = "https://api.coingecko.com/api/v3/simple/price?ids=smooth-love-potion&vs_currencies=php";
 
         xmlhttp.onreadystatechange = function() {
-
-            
-            
             if (this.readyState == 4 && this.status == 200) {
                 var data = JSON.parse(this.responseText);
                 var x = JSON.stringify(data['smooth-love-potion'].php);
                 getSLP(data['smooth-love-potion'].php);
                 console.log(x);
                 msg.channel.send("SLP VALUE:  ₱" + x + "");
-
-                /*if (content[0] === `${prefix}convert`) {
-        
-                    console.log("convert");
-                    var number = content[1];
-                    var value = x * number;
-                    if (isNaN(number) || number == '') {
-                        msg.channel.send("Please enter a number.");
-                    }
-                    else {
-                        msg.channel.send(value.toFixed(2));
-                    }
-                }*/
-
-        
-            };
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
+            }
+            else if (msg.content === `${prefix}convert`) {
+                console.log("convert");
+            }
             
+    
         };
-    }
-    else if (msg.content === `${prefix}axie help`) {
-        msg.channel.send("/slp - get slp value \n /hello axie - gives random slp \n /convert <number> - converts slp to php");
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+        
     }
  
 });
