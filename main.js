@@ -32,6 +32,9 @@ client.on("ready", () => {
 const prefix = "/";
 //Axie message
 client.on("message", msg => {
+
+    var content = msg.content.split(" ");
+
     if (msg.content === `${prefix}axie`) {
         msg.channel.send("Pakyu");
         //msg.channel.send(getSLP());
@@ -50,22 +53,56 @@ client.on("message", msg => {
         var url = "https://api.coingecko.com/api/v3/simple/price?ids=smooth-love-potion&vs_currencies=php";
 
         xmlhttp.onreadystatechange = function() {
+
+            
+            
             if (this.readyState == 4 && this.status == 200) {
                 var data = JSON.parse(this.responseText);
                 var x = JSON.stringify(data['smooth-love-potion'].php);
                 getSLP(data['smooth-love-potion'].php);
                 console.log(x);
                 msg.channel.send("SLP VALUE:  ₱" + x + "");
+
             }
-            else if (msg.content === `${prefix}convert`) {
-                console.log("convert");
-            }
-            
+
     
         };
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
         
+    }
+    else if (content[0] === `${prefix}convert`) {
+        
+        console.log("convert");
+        var number = content[1];
+        
+
+        var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+        var xmlhttp = new XMLHttpRequest();
+        var url = "https://api.coingecko.com/api/v3/simple/price?ids=smooth-love-potion&vs_currencies=php";
+
+        xmlhttp.onreadystatechange = function() {
+
+            
+            
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                var x = JSON.stringify(data['smooth-love-potion'].php);
+                getSLP(data['smooth-love-potion'].php);
+                console.log(x);
+                var value = x * number;
+                msg.channel.send("₱"+ value.toFixed(2));
+
+            }
+            
+        };
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+        
+
+    }
+    else if (msg.content === `${prefix}axie help`) {
+        msg.channel.send("[/slp - get slp value] [/hello axie - gives random slp]");
     }
     
     process.on('uncaughtException', err => {
