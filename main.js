@@ -108,7 +108,7 @@ client.on("message", msg => {
 
     }
     else if (msg.content === `${prefix}axie help`) {
-        msg.channel.send("[/slp - get slp value] [/hello axie - gives random slp]");
+        msg.channel.send("/slp - get slp value \n /hello axie - gives random slp \n /convert <number> - converts slp to php");
     }
     
     process.on('uncaughtException', err => {
