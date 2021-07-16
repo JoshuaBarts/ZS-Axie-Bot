@@ -95,7 +95,7 @@ client.on("message", msg => {
                     msg.channel.send("Please enter a number.");
                 }
                 else {
-                    msg.channel.send("₱"+ value.toFixed(2));
+                    msg.channel.send("₱" + x + " x " + number + "SLP = " + value.toFixed(2));
                 }
                 
 
