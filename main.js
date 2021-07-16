@@ -63,54 +63,30 @@ client.on("message", msg => {
                 console.log(x);
                 msg.channel.send("SLP VALUE:  ₱" + x + "");
 
-            }
-
-    
-        };
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
+                if (content[0] === `${prefix}convert`) {
         
-    }
-    else if (content[0] === `${prefix}convert`) {
-        
-        console.log("convert");
-        var number = content[1];
-        
-
-        var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-        var xmlhttp = new XMLHttpRequest();
-        var url = "https://api.coingecko.com/api/v3/simple/price?ids=smooth-love-potion&vs_currencies=php";
-
-        xmlhttp.onreadystatechange = function() {
-
-            
-            
-            if (this.readyState == 4 && this.status == 200) {
-                var data = JSON.parse(this.responseText);
-                var x = JSON.stringify(data['smooth-love-potion'].php);
-                getSLP(data['smooth-love-potion'].php);
-                console.log(x);
-                var value = x * number;
-                if (isNaN(number) || number == '') {
-                    msg.channel.send("Please enter a number.");
+                    console.log("convert");
+                    var number = content[1];
+                    var value = x * number;
+                    if (isNaN(number) || number == '') {
+                        msg.channel.send("Please enter a number.");
+                    }
+                    else {
+                        msg.channel.send(value.toFixed(2));
+                    }
                 }
-                else {
-                    msg.channel.send("₱" + x + " x " + number + " SLP = ₱" + value.toFixed(2));
-                }
-                
 
-            }
-            
-        };
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
         
-
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        
+        }
     }
     else if (msg.content === `${prefix}axie help`) {
         msg.channel.send("/slp - get slp value \n /hello axie - gives random slp \n /convert <number> - converts slp to php");
     }
-        
+ 
 });
 
 
