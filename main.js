@@ -69,6 +69,9 @@ client.on("message", msg => {
     else if (msg.content == `${prefix}hello axie`) {
         msg.channel.send("You got " + Math.floor(Math.random() * 10) + " free SLP!");
     }
+    else if (msg.content == `${prefix}axie help`) {
+        msg.channel.send("```COMMANDS \n\n/slp- get slp value \n/convert <number> - convertslp to php \n/hello axie - random slp \n/axie help - list of commands```");
+    }
     else if (msg.content == `${prefix}slp`) {
         process.setMaxListeners(Infinity);
         var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
