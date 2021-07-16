@@ -106,7 +106,7 @@ client.on("message", msg => {
                 var number = num * 1;
                 total = number * x;
                 console.log(total);
-                msg.channel.send(number + " SLP x ₱" + x + " = " + "₱" + "`HTTP" + total.toFixed(2) + "`");
+                msg.channel.send(number + " SLP x ₱" + x + " = " + "₱" + total.toFixed(2));
             }
         }
         xmlhttp.open("GET", url, true);
