@@ -78,12 +78,15 @@ client.on("message", msg => {
         }
         else {
             let msgArg = content.slice(1).join(" ");
-
+            
             msg.channel.send("🙋 "+ "**" + msgArg + "**").then( message => {
-            message.react("👍");
-            message.react("👎");
-            message.react("🖕");
-        });
+            message.react("👍").catch(console.error);
+            message.react("👎").catch(console.error);
+            message.react("🖕").catch(console.error);
+            message.delete({timeout: 1000}).catch(console.error);
+            });
+
+            
         }
 
         
