@@ -66,31 +66,6 @@ client.on("message", msg => {
     else if (msg.content == `${prefix}abu`) {
         msg.channel.send("rat");
     }
-    else if (content[0] == `${prefix}poll`) {
-        var content = msg.content.split(" ");
-        const Embed = new Discord.MessageEmbed()
-        .setColor(0xFFC300)
-        .setTitle("Poll")
-        .setDescription("/poll <question> to start a Paul.");
-
-        if(!content[1]) {
-            msg.channel.send(Embed);  
-        }
-        else {
-            let msgArg = content.slice(1).join(" ");
-            
-            msg.channel.send("🙋 "+ "**" + msgArg + "**").then( message => {
-            message.react("👍").catch(console.error);
-            message.react("👎").catch(console.error);
-            message.react("🖕").catch(console.error);
-            //msg.channel.delete().catch(console.error); //bug here
-            });
-
-            
-        }
-
-        
-    }
     else if (msg.content == `${prefix}hello axie`) {
         msg.channel.send("You got " + Math.floor(Math.random() * 10) + " free SLP!");
     }
