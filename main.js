@@ -83,7 +83,7 @@ client.on("message", msg => {
             message.react("👍").catch(console.error);
             message.react("👎").catch(console.error);
             message.react("🖕").catch(console.error);
-            message.delete({timeout: 1000}).catch(console.error); //bug here
+            //msg.channel.delete().catch(console.error); //bug here
             });
 
             
