@@ -76,7 +76,7 @@ client.on("message", msg => {
         //msg.channel.send("```COMMANDS \n\n/slp- get slp value \n/convert <number> - convertslp to php \n/hello axie - random slp \n/axie help - list of commands```");
         const Embed = new Discord.MessageEmbed()
         .setColor("#0099ff")
-        .setTitle("ZS Axie Bot Commands")
+        .setTitle("Click here: ZS Axie Website")
         .setURL('https://joshuabarts.github.io/axie-web/')
         .setDescription("```COMMANDS \n\n/slp- get slp value \n/convert <number> - convert slp to php \n/hello axie - random slp \n/axie help - list of commands \n/onjie - return IONA \n/abu - return rat```")
         .setImage("https://apklatestversion.com/logo/axie-infinity-apk.png")
