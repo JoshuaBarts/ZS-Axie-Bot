@@ -78,7 +78,7 @@ client.on("message", msg => {
         .setColor("#0099ff")
         .setTitle("Click here: ZS Axie Website")
         .setURL('https://joshuabarts.github.io/axie-web/')
-        .setDescription("```COMMANDS \n\n/slp- get slp value \n/convert <number> - convert slp to php \n/hello axie - random slp \n/axie help - list of commands \n/onjie - return IONA \n/abu - return rat```")
+        .setDescription("```COMMANDS \n\n/slp- get slp value \n/convert <number> - convert slp to php \n/axs - get axs value\n/hello axie - random slp \n/axie help - list of commands \n/onjie - return IONA \n/abu - return rat```")
         .setImage("https://apklatestversion.com/logo/axie-infinity-apk.png")
         .setFooter("./.");
 
@@ -97,6 +97,26 @@ client.on("message", msg => {
                 //getSLP();
                 console.log(x);
                 msg.channel.send("SLP VALUE:  ₱" + x + "");
+            }
+            
+        };
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+        
+    }
+    else if (msg.content == `${prefix}axs`) {
+        process.setMaxListeners(Infinity);
+        var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+        var xmlhttp = new XMLHttpRequest();
+        var url = "https://api.coingecko.com/api/v3/simple/price?ids=axie-infinity&vs_currencies=php";
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                var x = JSON.stringify(data['axie-infinity'].php);
+                //getSLP();
+                console.log(x);
+                msg.channel.send("AXS VALUE:  ₱" + x + "");
             }
             
         };
