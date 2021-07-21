@@ -70,8 +70,18 @@ client.on("message", msg => {
                 if (this.readyState == 4 && this.status == 200) {
                     var data = JSON.parse(this.responseText);
                     var x = JSON.stringify(data['smooth-love-potion'].php);
-                    console.log(x);
-                    msg.channel.send("SLP VALUE:  ₱" + x + "");
+                  
+                    const Embed = new Discord.MessageEmbed()
+                    .setColor("#0099ff")
+                    .setAuthor("Axie Infinity", 'https://assets.coingecko.com/coins/images/10366/large/SLP.png?1578640057', 'https://marketplace.axieinfinity.com/')
+                    .setThumbnail('https://assets.coingecko.com/coins/images/10366/large/SLP.png?1578640057')
+                    .setTitle('SLP VALUE : ₱' + x)
+                    .setTimestamp()
+                    .setURL('');
+
+                    console.log("this is cuurrent" + x)
+                    msg.channel.send(Embed);
+                    //msg.channel.send("SLP VALUE:  ₱" + x + "");
                 }
             
             };
