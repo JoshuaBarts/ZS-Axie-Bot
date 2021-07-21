@@ -103,7 +103,7 @@ client.on("message", msg => {
             break;
     }
 
-    if (msg.content[0] == `${prefix}convert`) {
+    if (content[0] == `${prefix}convert`) {
         var num = content[1];
         
         var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
