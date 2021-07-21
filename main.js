@@ -1,4 +1,5 @@
 
+
 //import dotenv package
 
 require('dotenv').config();
@@ -15,6 +16,32 @@ var CoingGeckoClient = new CoinGecko();
 
 process.setMaxListeners(Infinity);
 
+
+
+function getSLP() {
+    var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://api.coingecko.com/api/v3/simple/price?ids=smooth-love-potion&vs_currencies=php";
+    var num = 0;
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            var x = JSON.stringify(data['smooth-love-potion'].php);
+            console.log("this is x " + isNaN(x) + "= " + x)
+            var num = x;
+            console.log(isNaN(num));
+            
+            
+            
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    xmlhttp.abort();
+    return num;
+    
+}
+
 function showSLP(data) {
     return data;
 }
@@ -30,80 +57,74 @@ const prefix = "/";
 //Axie message
 client.on("message", msg => {
     var content = msg.content.split(" ");
-
-    switch(content) {
-        case `${prefix}axie`:
-            msg.channel.send("Pakyu");
-            break;
-        
-        case `${prefix}abu`:
-            msg.channel.send("rat");
-            break;
-
-        case `${prefix}hello axie`:
-            msg.channel.send("You got " + Math.floor(Math.random() * 10) + " free SLP!");
-            break;
-
-        case `${prefix}onjie`:
-            msg.channel.send(":regional_indicator_i: :regional_indicator_o: :regional_indicator_n: :regional_indicator_a: ");
-            break;
-
-        case `${prefix}axie help`:
-            const Embed = new Discord.MessageEmbed()
-            .setColor("#0099ff")
-            .setTitle("Click here: ZS Axie Website")
-            .setURL('https://joshuabarts.github.io/axie-web/')
-            .setDescription("```COMMANDS \n\n/slp- get slp value \n/convert <number> - convert slp to php \n/axs - get axs value\n/hello axie - random slp \n/axie help - list of commands \n/onjie - return IONA \n/abu - return rat```")
-            .setImage("https://apklatestversion.com/logo/axie-infinity-apk.png")
-            .setFooter("./.");
-
-            msg.channel.send(Embed);
-            break;
-
-        case `${prefix}slp`:
-            process.setMaxListeners(Infinity);
-            var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-            var xmlhttp = new XMLHttpRequest();
-            var url = "https://api.coingecko.com/api/v3/simple/price?ids=smooth-love-potion&vs_currencies=php";
-
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    var data = JSON.parse(this.responseText);
-                    var x = JSON.stringify(data['smooth-love-potion'].php);
-                    console.log(x);
-                    msg.channel.send("SLP VALUE:  ₱" + x + "");
-                }
-            
-            };
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
-            break;
-
-        case `${prefix}axs`:
-            process.setMaxListeners(Infinity);
-            var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-            var xmlhttp = new XMLHttpRequest();
-            var url = "https://api.coingecko.com/api/v3/simple/price?ids=axie-infinity&vs_currencies=php";
-
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    var data = JSON.parse(this.responseText);
-                    var x = JSON.stringify(data['axie-infinity'].php);
-                    console.log(x);
-                    var num = x * 1;
-                    msg.channel.send("AXS VALUE:  ₱" + num + "");
-                }
-            };
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
-            break;
-
-        default :
-            
-            break;
+    if (msg.content === `${prefix}axie`) {
+        msg.channel.send("Pakyu");
+        //msg.channel.send(getSLP());
+        //or if you want to mention name
+        //msg.reply("Putang ina mo!");
     }
+    else if (msg.content == `${prefix}abu`) {
+        msg.channel.send("rat");
+    }
+    else if (msg.content == `${prefix}hello axie`) {
+        msg.channel.send("You got " + Math.floor(Math.random() * 10) + " free SLP!");
+    }
+    else if (msg.content == `${prefix}onjie`) {
+        msg.channel.send(":regional_indicator_i: :regional_indicator_o: :regional_indicator_n: :regional_indicator_a: ");
+    }
+    else if (msg.content == `${prefix}axie help`) {
+        //msg.channel.send("```COMMANDS \n\n/slp- get slp value \n/convert <number> - convertslp to php \n/hello axie - random slp \n/axie help - list of commands```");
+        const Embed = new Discord.MessageEmbed()
+        .setColor("#0099ff")
+        .setTitle("Click here: ZS Axie Website")
+        .setURL('https://joshuabarts.github.io/axie-web/')
+        .setDescription("```COMMANDS \n\n/slp- get slp value \n/convert <number> - convert slp to php \n/axs - get axs value\n/hello axie - random slp \n/axie help - list of commands \n/onjie - return IONA \n/abu - return rat```")
+        .setImage("https://apklatestversion.com/logo/axie-infinity-apk.png")
+        .setFooter("./.");
 
-    if (msg.content[0] == `${prefix}convert`) {
+        msg.channel.send(Embed);
+    }
+    else if (msg.content == `${prefix}slp`) {
+        process.setMaxListeners(Infinity);
+        var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+        var xmlhttp = new XMLHttpRequest();
+        var url = "https://api.coingecko.com/api/v3/simple/price?ids=smooth-love-potion&vs_currencies=php";
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                var x = JSON.stringify(data['smooth-love-potion'].php);
+                //getSLP();
+                console.log(x);
+                msg.channel.send("SLP VALUE:  ₱" + x + "");
+            }
+            
+        };
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+        
+    }
+    else if (msg.content == `${prefix}axs`) {
+        process.setMaxListeners(Infinity);
+        var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+        var xmlhttp = new XMLHttpRequest();
+        var url = "https://api.coingecko.com/api/v3/simple/price?ids=axie-infinity&vs_currencies=php";
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                var x = JSON.stringify(data['axie-infinity'].php);
+                //getSLP();
+                console.log(x);
+                msg.channel.send("AXS VALUE:  ₱" + x + "");
+            }
+            
+        };
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+        
+    }
+    else if (content[0] == `${prefix}convert`) {
         var num = content[1];
         
         var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
@@ -131,7 +152,10 @@ client.on("message", msg => {
         }
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
+       
+        
     }
+    
 });
 
 
