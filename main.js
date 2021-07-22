@@ -75,7 +75,7 @@ client.on("message", msg => {
                     var x = JSON.stringify(data['smooth-love-potion'].php);
                     console.log(x);
                     var num = x * 1;
-                    msg.channel.send("SLP VALUE:  ₱" + num + "");
+                    msg.channel.send("<:JIE:853938367874727987> SLP VALUE:  ₱" + num + "");
                 }
             
             };
