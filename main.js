@@ -61,6 +61,7 @@ client.on("message", msg => {
             break;
 
         case `${prefix}slp`:
+        case `${prefix}SLP`:
             process.setMaxListeners(Infinity);
             var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
             var xmlhttp = new XMLHttpRequest();
@@ -84,6 +85,7 @@ client.on("message", msg => {
             break;
 
         case `${prefix}axs`:
+        case `${prefix}AXS`:
             process.setMaxListeners(Infinity);
             var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
             var xmlhttp = new XMLHttpRequest();
@@ -107,7 +109,7 @@ client.on("message", msg => {
             break;
     }
 
-    if (content[0] == `${prefix}convert`) {
+    if (content[0] == `${prefix}convert` || content[0] == `${prefix}CONVERT`) {
         var num = content[1];
         
         var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
