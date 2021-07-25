@@ -11,6 +11,9 @@ const client = new Discord.Client();
 const CoinGecko = require('coingecko-api');
 var CoingGeckoClient = new CoinGecko();
 
+//import database
+const Sequelize = require('sequelize');
+
 //Get the current price of Axie SLP vs_currencies PHP
 
 process.setMaxListeners(Infinity);
@@ -103,7 +106,26 @@ client.on("message", msg => {
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
             break;
+        
+        case `${prefix}skill`:
+        case `${prefix}Skill`:   
+            process.setMaxListeners(Infinity);
+            var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+            var xmlhttp = new XMLHttpRequest();
+            var url = "https://api.coingecko.com/api/v3/simple/price?ids=cryptoblades&vs_currencies=php";
 
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    var x = JSON.stringify(data['cryptoblades'].php);
+                    console.log(x);
+                    var num = x * 1;
+                    msg.channel.send("SKILL(CryptoBlades) VALUE:  ₱" + num + "");
+                }
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+            break;
         default :
             
             break;
