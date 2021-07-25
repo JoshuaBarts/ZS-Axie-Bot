@@ -108,7 +108,8 @@ client.on("message", msg => {
             break;
         
         case `${prefix}skill`:
-        case `${prefix}Skill`:   
+        case `${prefix}SKILL`:
+        case `${prefix}Skill`: 
             process.setMaxListeners(Infinity);
             var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
             var xmlhttp = new XMLHttpRequest();
