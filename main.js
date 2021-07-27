@@ -161,6 +161,36 @@ client.on("message", msg => {
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
     }
+
+    if (content[0] == `${prefix}convert-skill` || content[0] == `${prefix}CONVERT-SKILL`) {
+        var num = content[1];
+        
+        var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+        var xmlhttp = new XMLHttpRequest();
+        var url = "https://api.coingecko.com/api/v3/simple/price?ids=cryptoblades&vs_currencies=php";
+        var xx = 0;
+        var total = 0;
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                var x = JSON.stringify(data['cryptoblades'].php);
+                console.log("this is x " + isNaN(x) + "= " + x)
+                xx = x;
+                var number = num * 1;
+                total = number * x;
+                console.log(total);
+                if (isNaN(total)) {
+                    msg.channel.send("Please enter a number.");
+                }
+                else {
+                    msg.channel.send(number + " SKILL x ₱" + x + " = " + "₱" + total.toFixed(2));
+                }
+                
+            }
+        }
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+    }
 });
 
 
