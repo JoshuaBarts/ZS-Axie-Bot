@@ -127,6 +127,25 @@ client.on("message", msg => {
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
             break;
+        
+        case `${prefix}mist`:
+            process.setMaxListeners(Infinity);
+            var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+            var xmlhttp = new XMLHttpRequest();
+            var url = "https://api.coingecko.com/api/v3/simple/price?ids=mist&vs_currencies=php";
+
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    var x = JSON.stringify(data['mist'].php);
+                    console.log(x);
+                    var num = x * 1;
+                    msg.channel.send("MIST VALUE:  ₱" + num + "");
+                }
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();        
+            break;
         default :
             
             break;
