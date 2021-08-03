@@ -79,7 +79,7 @@ client.on("message", msg => {
                     var x = JSON.stringify(data['smooth-love-potion'].php);
                     console.log(x);
                     var num = x * 1;
-                    msg.channel.send("<:JIE:853938367874727987> SLP VALUE:  ₱***" + num + "***");
+                    msg.channel.send("<:smoothlovepotion:871984274574823496> SLP VALUE:  ₱***" + num + "***");
                 }
             
             };
@@ -100,7 +100,7 @@ client.on("message", msg => {
                     var x = JSON.stringify(data['axie-infinity'].php);
                     console.log(x);
                     var num = x * 1;
-                    msg.channel.send("AXS VALUE:  ₱" + num + "");
+                    msg.channel.send("<:axs:871984785696886804> AXS VALUE:  ₱" + num + "");
                 }
             };
             xmlhttp.open("GET", url, true);
@@ -121,7 +121,7 @@ client.on("message", msg => {
                     var x = JSON.stringify(data['cryptoblades'].php);
                     console.log(x);
                     var num = x * 1;
-                    msg.channel.send("SKILL(CryptoBlades) VALUE:  ₱" + num + "");
+                    msg.channel.send("<:skill:871985107215474736> SKILL(CryptoBlades) VALUE:  ₱" + num + "");
                 }
             };
             xmlhttp.open("GET", url, true);
