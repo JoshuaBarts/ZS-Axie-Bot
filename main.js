@@ -156,10 +156,10 @@ client.on("message", msg => {
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var data = JSON.parse(this.responseText);
-                    var x = JSON.stringify(data['ethereum'].php);
+                    var x = JSON.stringify(data['ethereum'].cad);
                     console.log(x);
                     var num = x * 1;
-                    msg.channel.send("ETH VALUE:  ₱" + num + "");
+                    msg.channel.send("ETH VALUE:  $" + num + "");
                 }
             };
             xmlhttp.open("GET", url, true);
