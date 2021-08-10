@@ -167,7 +167,7 @@ client.on("message", msg => {
         break;
 
         case `${prefix}roll`:
-                var user = msg.guild.members.cache.random().toString();
+                var user = msg.guild.members.cache.random();
                 
                 msg.channel.send(`${user.user}`);
         break;
