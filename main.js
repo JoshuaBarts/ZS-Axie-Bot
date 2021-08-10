@@ -179,7 +179,10 @@ client.on("message", msg => {
             if (array_) {
                 msg.channel.send(`Heads`);
             }
+            else {
                 msg.channel.send(`Tails`);
+            }
+                
         break;
 
         default :
