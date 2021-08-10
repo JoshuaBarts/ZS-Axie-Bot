@@ -165,6 +165,13 @@ client.on("message", msg => {
             xmlhttp.open("GET", url, true);
             xmlhttp.send();        
         break;
+
+        case `${prefix}roll`:
+                var user = msg.guild.members.cache.random().toString();
+                
+                msg.channel.send(`${user.user}`);
+        break;
+
         default :
             
             break;
