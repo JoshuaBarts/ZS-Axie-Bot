@@ -172,6 +172,16 @@ client.on("message", msg => {
                 msg.channel.send(`Bot picked ${user_}!`);
         break;
 
+        case `${prefix}flip`:
+           
+            var array_ = (Math.floor(Math.random() * 2) == 0);
+
+            if (array_) {
+                msg.channel.send(`Heads`);
+            }
+                msg.channel.send(`Tails`);
+        break;
+
         default :
             
             break;
