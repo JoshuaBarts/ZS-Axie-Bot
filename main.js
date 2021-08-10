@@ -168,8 +168,8 @@ client.on("message", msg => {
 
         case `${prefix}roll`:
                 var user = msg.guild.members.cache.random();
-                
-                msg.channel.send(`${user.user}`);
+                var user_ = user.toString();
+                msg.channel.send(`Bot picked ${user_}!`);
         break;
 
         default :
