@@ -41,8 +41,8 @@ client.on("message", msg => {
     const serverQueue = queue.get(msg.guild.id);
 
     //bot function
-    async function execute(message, serverQueue) {
-        const args = message.content.split(" ");
+    async function execute(msg, serverQueue) {
+        const args = msg.content.split(" ");
       
         const voiceChannel = msg.member.voice.channel;
         if (!voiceChannel)
