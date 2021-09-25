@@ -24,7 +24,7 @@ function showSLP(data) {
 
 //music bot
 const ytdl = require('ytdl-core');
-
+const queue = new Map();
 
 
 //check if Axie Bot is online
