@@ -290,7 +290,7 @@ client.on("message", msg => {
     }
 
     if (content[0] == `${prefix}ask`) {
-        var who = content[1];
+        
         var user = msg.guild.members.cache.random();
         var user_ = user.toString();
         msg.channel.send(`Bot picked ${user_}!`);
