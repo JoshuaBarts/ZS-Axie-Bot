@@ -42,7 +42,7 @@ client.on("message", msg => {
 
     //bot function
     async function execute(msg, serverQueue) {
-        const args = msg.content.split(" ");
+        const args = msg.content.split("");
       
         const voiceChannel = msg.member.voice.channel;
         if (!voiceChannel)
@@ -56,7 +56,7 @@ client.on("message", msg => {
           );
         }
       
-        const songInfo = await ytdl.getInfo(args[1]);
+        const songInfo = await ytdl.getInfo(args[0]);
         const song = {
               title: songInfo.videoDetails.title,
               url: songInfo.videoDetails.video_url,
@@ -121,16 +121,20 @@ client.on("message", msg => {
           .on("error", error => console.error(error));
         dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
         serverQueue.textChannel.send(`Start playing: **${song.title}**`);
+
+        if (msg.content.startsWith(`${prefix}playmusic`)) {
+            execute(msg, serverQueue);
+            return;
+          } else if (msg.content.startsWith(`${prefix}stopmusic`)) {
+            stop(msg, serverQueue);
+            return;
+          } else {
+            msg.channel.send("You need to enter a valid command!");
+          }
       }
       
     switch(msg.content) {
 
-        case `${prefix}playmusic` :
-            execute(msg, serverQueue);
-            break;
-        case `${prefix}stopmusic` :
-            stop(msg, serverQueue);
-            break;
         case `${prefix}axie`:
             msg.channel.send("Pakyu");
             break;
