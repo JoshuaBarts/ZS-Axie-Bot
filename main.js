@@ -42,7 +42,7 @@ client.on("message", msg => {
 
     //bot function
     async function execute(msg, serverQueue) {
-        const args = msg.content.split("");
+        const args = msg.content.split(' ');
       
         const voiceChannel = msg.member.voice.channel;
         if (!voiceChannel)
@@ -56,7 +56,7 @@ client.on("message", msg => {
           );
         }
       
-        const songInfo = await ytdl.getInfo(args[0]);
+        const songInfo = await ytdl.getInfo(args[1]); 
         const song = {
               title: songInfo.videoDetails.title,
               url: songInfo.videoDetails.video_url,
@@ -105,6 +105,7 @@ client.on("message", msg => {
       }
       
       function play(guild, song) {
+          console.log("working")
         const serverQueue = queue.get(guild.id);
         if (!song) {
           serverQueue.voiceChannel.leave();
@@ -121,20 +122,17 @@ client.on("message", msg => {
           .on("error", error => console.error(error));
         dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
         serverQueue.textChannel.send(`Start playing: **${song.title}**`);
-
-        if (msg.content.startsWith(`${prefix}playmusic`)) {
-            execute(msg, serverQueue);
-            return;
-          } else if (msg.content.startsWith(`${prefix}stopmusic`)) {
-            stop(msg, serverQueue);
-            return;
-          } else {
-            msg.channel.send("You need to enter a valid command!");
-          }
       }
       
     switch(msg.content) {
 
+        case `${prefix}playmusic` :
+            var arg = msg.content[1];
+            execute(msg, serverQueue);
+            break;
+        case `${prefix}stopmusic` :
+            stop(msg, serverQueue);
+            break;
         case `${prefix}axie`:
             msg.channel.send("Pakyu");
             break;
@@ -142,6 +140,7 @@ client.on("message", msg => {
         case `${prefix}abu`:
             msg.channel.send("rat");
             break;
+        
 
         case `${prefix}hello axie`:
             msg.channel.send("You got " + Math.floor(Math.random() * 10) + " free SLP!");
@@ -288,6 +287,13 @@ client.on("message", msg => {
         default :
             
             break;
+    }
+
+    if (content[0] == `${prefix}ask`) {
+        var who = content[1];
+        var user = msg.guild.members.cache.random();
+        var user_ = user.toString();
+        msg.channel.send(`Bot picked ${user_}!`);
     }
 
     if (content[0] == `${prefix}convert` || content[0] == `${prefix}CONVERT`) {
