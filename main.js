@@ -355,53 +355,9 @@ client.on("message", msg => {
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
     }
-
     
 
 });
-
-
-    //scraper
-    //dependencies
-
-    client.on("message", msg => {
-        
-    const axios = require('axios')
-    const cheerio = require('cheerio')
-    const { response } = require('express')
-    const express = require('express')
-    const PORT = 8000
-    
-    const app = express()
-    
-    const url = 'https://www.pornhub.com/'
-    
-    axios(url)
-        .then(response => {
-            const html = response.data
-            //console.log(html)
-            const $ = cheerio.load(html)
-            const links = []
-    
-            $('span.title a', html).each(function() {
-                const title = $(this).attr('title')
-                const url = $(this).attr('href')
-                const link = 'www.pornhub.com' + url;
-                links.push({
-                    title,
-                    link
-                })
-            })
-            console.log(links)
-            if (msg == `${prefix}scrape`) {
-                msg.channel.send(links)
-            }
-        }).catch(err => console.log(err))
-    
-    //app.listen(PORT, () => console.log(`Server is up on PORT ${PORT}`) )
-    })
-
-    
 
 
 //bot token
