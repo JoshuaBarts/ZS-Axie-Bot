@@ -7,7 +7,8 @@ only for testing
 
 Node_modules not included
 
-run on terminal:
+to install modules => run on terminal:
 
 npm i axios
-npm i discord.js
+& npm i discord.js
+
