@@ -3,7 +3,7 @@
 coingecko api integrated 
 get slp value - php currency
 
-only for testing
+only for zs discord
 
 Node_modules not included
 
