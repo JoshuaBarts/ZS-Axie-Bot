@@ -12,6 +12,20 @@ module.exports = function(msg, args) {
 
             console.log(data)
             console.log(slp)
+            
             msg.channel.send("<:smoothlovepotion:871984274574823496> SLP VALUE:  ₱***" + slp + "***")
+                .then(function(message) {
+                    if (slp > 3.50) {
+                        message.react("😍")
+                    }
+                    else {
+                        message.react("😭")
+                    }
+                    
+                    
+                }).catch(function() {
+                    console.log(err)
+                })
+               
         })
 }
