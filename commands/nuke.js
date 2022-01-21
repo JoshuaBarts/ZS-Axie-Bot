@@ -17,6 +17,6 @@ module.exports = function(msg, args) {
     //console.log(max)
     let nuke = `https://nhentai.net/g/` + number;
     msg.delete({timeout: '1000'});
-    msg.channel.send(nuke);   
+    msg.author.send(nuke);   
     
 }
