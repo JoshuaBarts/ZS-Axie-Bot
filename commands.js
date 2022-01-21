@@ -10,9 +10,10 @@ const convertskill = require("./commands/convert-skill.js");
 const axiehelp = require("./commands/axiehelp.js");
 const gif = require("./commands/gif.js");
 const nuke = require("./commands/nuke.js");
+const update = require("./commands/update.js");
 //DISCORD COMMANDS
 const commands =  {
-    slp, SLP, axs, AXS, convertslp, convertaxs, skill, SKILL, convertskill, axiehelp, gif, nuke
+    slp, SLP, axs, AXS, convertslp, convertaxs, skill, SKILL, convertskill, axiehelp, gif, nuke, update
 }
 
 module.exports = async function (msg) {
