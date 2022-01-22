@@ -1,7 +1,6 @@
 const { default: axios } = require("axios");
 const { cheerio } = require("cheerio");
-const Discord = require('discord.js');
-const client = new Discord.Client();
+
 module.exports =  function(msg, args) {
     
     client.on("ready", async() => {
@@ -20,8 +19,7 @@ module.exports =  function(msg, args) {
         let nuke = `https://nhentai.net/g/` + number;
         msg.delete({timeout: '1000'});
         let id = msg.author.id;
-        const user = await client.users.fetch(id);
-        interaction.user.send(nuke)
+        msg.channel.send(nuke)
     })
     
     
