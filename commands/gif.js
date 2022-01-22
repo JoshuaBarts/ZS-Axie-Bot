@@ -12,6 +12,7 @@ module.exports = function(msg, args) {
             var response = response.data
             const index = Math.floor(Math.random() * response.results.length)
             //console.log(data)
+            msg.delete({timeout: '1000'});
             msg.channel.send(response.results[index].url)
         })
 }

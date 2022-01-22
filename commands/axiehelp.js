@@ -9,5 +9,6 @@ module.exports = function(msg, args) {
         .setImage("https://apklatestversion.com/logo/axie-infinity-apk.png")
         .setFooter("/axiehelp for commands");
 
+        msg.delete({timeout: '1000'});
         msg.channel.send(Embed);
 }
