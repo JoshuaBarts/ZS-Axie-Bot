@@ -12,7 +12,7 @@ const gif = require("./commands/gif.js");
 const nuke = require("./commands/nuke.js");
 const update = require("./commands/update.js");
 
-const confess = require("./commands/confess.js");
+//const confess = require("./commands/confess.js");
 //DISCORD COMMANDS
 const commands =  {
     slp, SLP, axs, AXS, convertslp, convertaxs, skill, SKILL, convertskill, axiehelp, gif, nuke, update
