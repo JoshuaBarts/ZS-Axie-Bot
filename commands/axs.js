@@ -12,6 +12,7 @@ module.exports = function(msg, args) {
 
             console.log(data)
             console.log(axs)
+            msg.delete({timeout: '1000'});
             msg.channel.send("<:axs:871984785696886804> AXS VALUE:  ₱" + axs + "")
         })
 }

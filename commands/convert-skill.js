@@ -16,6 +16,7 @@ module.exports = function(msg, args) {
             total = keywords * skill;
             console.log(total)
             console.log(args)
+            msg.delete({timeout: '1000'});
             msg.channel.send("<:skill:871985107215474736> SKILL CONVERSION:  (RATE: " + skill + ") => ₱***" + total.toFixed(2) + "***")
         })
 }

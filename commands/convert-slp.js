@@ -16,6 +16,7 @@ module.exports = function(msg, args) {
             total = keywords * slp;
             console.log(total)
             console.log(args)
+            msg.delete({timeout: '1000'});
             msg.channel.send("<:smoothlovepotion:871984274574823496> SLP CONVERSION:  (RATE: " + slp + ") => ₱***" + total.toFixed(2) + "***")
         })
 }

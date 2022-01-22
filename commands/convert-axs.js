@@ -16,6 +16,7 @@ module.exports = function(msg, args) {
             total = keywords * axs;
             console.log(total)
             console.log(args)
+            msg.delete({timeout: '1000'});
             msg.channel.send("<:axs:871984785696886804> AXS CONVERSION:  (RATE: " + axs + ") => ₱***" + total.toFixed(2) + "***")
         })
 }

@@ -12,6 +12,7 @@ module.exports = function(msg, args) {
 
             console.log(data)
             console.log(skill)
+            msg.delete({timeout: '1000'});
             msg.channel.send("<:skill:871985107215474736> SKILL VALUE:  ₱***" + skill + "***")
         })
 }
