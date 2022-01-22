@@ -1,7 +1,7 @@
 //import dotenv package
 
 require('dotenv').config();
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageAttachment } = require('discord.js');
 //import Discord.js library
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -35,10 +35,12 @@ client.on('message', msg => {
         var channel = zs.channels.cache.get("934286814892654653"); // get channel within guild by id
         var confessionlog = guild.channels.cache.get("934284586576384000"); //conf log
         
+        const file = new MessageAttachment('jihoz.gif');
         const confessionembed = new MessageEmbed()
         .setColor("#F1C40F")
         .setDescription(`"${msg.content}"`)
         .setAuthor(`Anonymous Confession Arrived | Dm ${client.user.username} to confess 👀`)
+        .setThumbnail("https://c.tenor.com/F00qGAKDOKkAAAAd/jihoz.gif")
         .setTimestamp();
 
         const logembed = new MessageEmbed()
@@ -54,6 +56,10 @@ client.on('message', msg => {
 
         channel.send(confessionembed);
         confessionlog.send(logembed);
+            
+
+
+        
     }
 });
 
