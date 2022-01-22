@@ -37,7 +37,7 @@ client.on('message', msg => {
         
         const confessionembed = new MessageEmbed()
         .setColor("#F1C40F")
-        .setDescription(```${msg.content}```)
+        .setDescription(`"${msg.content}"`)
         .setAuthor(`Anonymous Confession Arrived | Dm ${client.user.username} to confess 👀`)
         .setTimestamp();
 
