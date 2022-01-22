@@ -1,7 +1,8 @@
 const { default: axios } = require("axios");
 const { cheerio } = require("cheerio");
-
-module.exports = function(msg, args) {
+const Discord = require('discord.js');
+const client = new Discord.Client();
+module.exports = async function(msg, args) {
     
     let max = args;
     if (args.length > 0) {
@@ -17,7 +18,7 @@ module.exports = function(msg, args) {
     //console.log(max)
     let nuke = `https://nhentai.net/g/` + number;
     msg.delete({timeout: '1000'});
-    let id = msg.author;
-    msg.author.send(nuke)
+    const user = await client.users.fetch(`${msg.author.id}`);
+    interaction.user.send(nuke)
     
 }
